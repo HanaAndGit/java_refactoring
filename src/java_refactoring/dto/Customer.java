@@ -30,26 +30,9 @@ public class Customer {
 				+ "");
 		
 		for(Rental each : rentals) {
-			double thisAmount = 0;
 			
-			switch(each.getMovie().getPriceCode()) {
-			case Movie.REGULAR:
-				thisAmount += 2;
-				if(each.getDaysRented()>2) {
-					thisAmount += (each.getDaysRented() -2) * 1.5;
-				}
-				break;
-			case Movie.NEW_RELEASE:
-				thisAmount += each.getDaysRented() * 3;
-				break;
-			case Movie.CHILDREN:
-				thisAmount += 1.5;
-				if(each.getDaysRented()>3) {
-					thisAmount += (each.getDaysRented() - 3) * 1.5;
-				}
-				break;
-			}
-		
+			double thisAmount = amountFor(each);
+
 			//적립 포인트를 1포인트 증가
 			frequentRenterPoints++;
 			//최신물을 이틀 이상 대여하면 보너스 포인트 지급
@@ -71,6 +54,29 @@ public class Customer {
 		
 		return result.toString();
 		
+	}
+	
+	private double amountFor(Rental each) {
+		double thisAmount = 0;
+		
+		switch(each.getMovie().getPriceCode()) {
+		case Movie.REGULAR:
+			thisAmount += 2;
+			if(each.getDaysRented()>2) {
+				thisAmount += (each.getDaysRented() -2) * 1.5;
+			}
+			break;
+		case Movie.NEW_RELEASE:
+			thisAmount += each.getDaysRented() * 3;
+			break;
+		case Movie.CHILDREN:
+			thisAmount += 1.5;
+			if(each.getDaysRented()>3) {
+				thisAmount += (each.getDaysRented() - 3) * 1.5;
+			}
+			break;
+		}
+		return thisAmount;
 	}
 	
 	
