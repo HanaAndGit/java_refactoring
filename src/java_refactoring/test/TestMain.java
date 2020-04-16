@@ -30,8 +30,8 @@ public class TestMain {
 		c1.addRental(r4);
 		c1.addRental(r6);
 		
-		System.out.println(c.statement());
+		System.out.println(c.htmlStatement());
 		System.out.println();
-		System.out.println(c1.statement());
+		System.out.println(c1.htmlStatement());
 	}
 }

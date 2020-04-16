@@ -20,14 +20,16 @@ public class Customer {
 		return name;
 	}
 	
-	public String statement() {
+	public String htmlStatement() {
 		//double totalAmount = 0;
 		int frequentRenterPoints = 0;
 		
-		StringBuilder result = new StringBuilder(getName() + " 고객님의 대여 기록\n"
-				+ ""
-				+ ""
-				+ "");
+//		StringBuilder result = new StringBuilder(getName() + " 고객님의 대여 기록\n"
+//				+ ""
+//				+ ""
+//				+ "");
+		
+		StringBuilder result = new StringBuilder("<H1><EM>" + getName() + "고객님의 대여 기록 </EM><H1><P>\n"); 
 		
 		for(Rental each : rentals) {
 			
@@ -41,11 +43,11 @@ public class Customer {
 //				frequentRenterPoints++;
 //			}
 			//frequentRenterPoints += each.getFrequentPoints();
-			frequentRenterPoints += each.getFrequentPoints();
+			frequentRenterPoints += each.getFrequentRentalPoints();
 			//이번에 대여하는 비디오 정보와 대여료를 출력
-			result.append("\t" + each.getMovie().getTitle());
+			result.append("\t" + each.getMovie().getTitle() + ": ");
 			//result.append("\t"+ String.valueOf(thisAmount) + "\n");
-			result.append("\t" + String.valueOf(each.getCharge()) + "\n");
+			result.append("\t" + String.valueOf(each.getCharge()) + "<br>\n");
 			
 			//현재까지 누적된 총 대여료
 			//totalAmount += thisAmount;
@@ -54,8 +56,10 @@ public class Customer {
 		
 		//푸터행 추가
 		//result.append("누적 대여료 : " + String.valueOf(totalAmount) + "\n");
-		result.append("누적 대여료 : " + String.valueOf(getTotalCharge()) + "\n");
-		result.append("적립 포인트 : " + String.valueOf(frequentRenterPoints));
+		result.append("<p>누적 대여료 : <EM>");
+		result.append(String.valueOf(getTotalCharge()) + "</EM>\n");
+		result.append("<p>적립 포인트 : <EM>");
+		result.append(String.valueOf(frequentRenterPoints) + "</EM><p>");
 		
 		return result.toString();
 		
@@ -74,7 +78,7 @@ public class Customer {
 	private int getTotalFrequentRentalPoints() {
 		int result = 0;
 		for(Rental rental : rentals) {
-			result += rental.getFrequentPoints();
+			result += rental.getFrequentRentalPoints();
 		}
 		return result;
 	}
