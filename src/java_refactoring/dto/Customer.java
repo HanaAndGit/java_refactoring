@@ -31,7 +31,7 @@ public class Customer {
 		
 		for(Rental each : rentals) {
 			
-			double thisAmount = each.getCharge();
+			//double thisAmount = each.getCharge();
 
 			//적립 포인트를 1포인트 증가
 			frequentRenterPoints++;
@@ -42,10 +42,12 @@ public class Customer {
 			}
 			//이번에 대여하는 비디오 정보와 대여료를 출력
 			result.append("\t" + each.getMovie().getTitle());
-			result.append("\t"+ String.valueOf(thisAmount) + "\n");
+			//result.append("\t"+ String.valueOf(thisAmount) + "\n");
+			result.append("\t" + String.valueOf(each.getCharge()) + "\n");
 			
 			//현재까지 누적된 총 대여료
-			totalAmount += thisAmount;
+			//totalAmount += thisAmount;
+			totalAmount += each.getCharge();
 		}//end of for-loop
 		
 		//푸터행 추가
