@@ -40,5 +40,13 @@ public class Rental {
 	}
 	
 	
+	public int getFrequentPoints() {//최신물이고 대여 일 수가 1일 이상이면 포인트 2 
+		if((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1) {
+			return 2;
+		}else {//아니면 포인트 1 
+			return 1;
+		}
+	}
+	
 	
 }

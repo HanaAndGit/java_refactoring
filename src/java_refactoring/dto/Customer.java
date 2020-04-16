@@ -34,12 +34,13 @@ public class Customer {
 			//double thisAmount = each.getCharge();
 
 			//적립 포인트를 1포인트 증가
-			frequentRenterPoints++;
+			//frequentRenterPoints++;
 			//최신물을 이틀 이상 대여하면 보너스 포인트 지급
-			if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && 
-				each.getDaysRented() > 1) {
-				frequentRenterPoints++;
-			}
+//			if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && 
+//				each.getDaysRented() > 1) {
+//				frequentRenterPoints++;
+//			}
+			frequentRenterPoints += each.getFrequentPoints();
 			//이번에 대여하는 비디오 정보와 대여료를 출력
 			result.append("\t" + each.getMovie().getTitle());
 			//result.append("\t"+ String.valueOf(thisAmount) + "\n");
