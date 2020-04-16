@@ -31,7 +31,7 @@ public class Customer {
 		
 		for(Rental each : rentals) {
 			
-			double thisAmount = amountFor(each);
+			double thisAmount = each.getCharge();
 
 			//적립 포인트를 1포인트 증가
 			frequentRenterPoints++;
@@ -56,28 +56,28 @@ public class Customer {
 		
 	}
 	
-	private double amountFor(Rental each) {
-		double thisAmount = 0;
-		
-		switch(each.getMovie().getPriceCode()) {
-		case Movie.REGULAR:
-			thisAmount += 2;
-			if(each.getDaysRented()>2) {
-				thisAmount += (each.getDaysRented() -2) * 1.5;
-			}
-			break;
-		case Movie.NEW_RELEASE:
-			thisAmount += each.getDaysRented() * 3;
-			break;
-		case Movie.CHILDREN:
-			thisAmount += 1.5;
-			if(each.getDaysRented()>3) {
-				thisAmount += (each.getDaysRented() - 3) * 1.5;
-			}
-			break;
-		}
-		return thisAmount;
-	}
-	
+//	private double amountFor(Rental aRental) {
+//		double thisAmount = 0;
+//		
+//		switch(aRental.getMovie().getPriceCode()) {
+//		case Movie.REGULAR:
+//			thisAmount += 2;
+//			if(aRental.getDaysRented()>2) {
+//				thisAmount += (aRental.getDaysRented() -2) * 1.5;
+//			}
+//			break;
+//		case Movie.NEW_RELEASE:
+//			thisAmount += aRental.getDaysRented() * 3;
+//			break;
+//		case Movie.CHILDREN:
+//			thisAmount += 1.5;
+//			if(aRental.getDaysRented()>3) {
+//				thisAmount += (aRental.getDaysRented() - 3) * 1.5;
+//			}
+//			break;
+//		}
+//		return thisAmount;
+//	}
+//	
 	
 }
